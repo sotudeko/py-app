@@ -18,7 +18,8 @@ pipeline {
         stage('Nexus IQ Scan'){
             steps {
                 //nexusPolicyEvaluation failBuildOnNetworkError: false, iqApplication: 'pytest', iqStage: 'build', jobCredentialsId: ''
-                nexusPolicyEvaluation failBuildOnNetworkError: false, iqScanPatterns: [[scanPattern: '*.whl'], [scanPattern: '**/*.whl'], [scanPattern: '**/*.tar.gz'], [scanPattern: '**/*.zip']], iqApplication: 'pytest', iqStage: 'build'
+                //nexusPolicyEvaluation failBuildOnNetworkError: false, iqScanPatterns: [[scanPattern: '*.whl'], [scanPattern: '**/*.whl'], [scanPattern: '**/*.tar.gz'], [scanPattern: '**/*.zip']], iqApplication: 'pytest', iqStage: 'build'
+                sh 'java -jar /opt/nexus-iq/nexus-iq-cli -D zip=whl -i pytest -s http://localhost:8070 -a admin:admin123 -t build .'
             }
 
 
