@@ -5,7 +5,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'download.sh'
+                sh 'pip download -r requirements.txt'
             }
         }
 
