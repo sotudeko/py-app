@@ -7,6 +7,12 @@ pipeline {
             steps {
                 sh 'pip download -r requirements.txt'
             }
+            post {
+                success {
+                    echo 'List files....'
+                    sh 'ls -l'
+                }
+            }
         }
 
         stage('Nexus IQ Scan'){
